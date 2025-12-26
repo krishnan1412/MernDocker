@@ -14,6 +14,16 @@ pipeline {
             }
         }
 
+        stage('install docker') {
+            steps {
+                script {
+                    sh "sudo apt install -y dockerio"
+                    sh "usermod -aG docker jenkins"
+                    sh "sudo systemctl restart jenkins"
+                }
+            }
+        }
+
         stage('Build & Tag Images') {
             steps {
                 script {
