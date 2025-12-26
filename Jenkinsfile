@@ -14,6 +14,7 @@ pipeline {
             }
         }
 
+        
         stage('install docker') {
             steps {
                 script {
