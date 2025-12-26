@@ -17,7 +17,7 @@ pipeline {
         stage('install docker') {
             steps {
                 script {
-                    sh "sudo apt install -y dockerio"
+                    sh "sudo apt install -y docker.io docker-compose-plugin"
                     sh "usermod -aG docker jenkins"
                     sh "sudo systemctl restart jenkins"
                 }
