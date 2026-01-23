@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker_node' }
+    agent any
 
     environment {
         DOCKER_REGISTRY = "krishnan14"
@@ -14,12 +14,11 @@ pipeline {
             }
         }
 
-        stage('install docker') {
+        stage('Verify Docker') {
             steps {
                 script {
-                    sh "sudo apt install -y docker.io docker-compose-plugin"
-                    sh "usermod -aG docker jenkins"
-                    sh "sudo systemctl restart jenkins"
+                    sh "docker --version"
+                    sh "docker compose version"
                 }
             }
         }
