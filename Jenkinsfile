@@ -17,8 +17,8 @@ pipeline {
         stage('Install Docker') {
             steps {
                 script {
-                    sh "sudo apt update"
-                    sh "sudo apt install -y docker.io docker-compose-plugin"
+                    sh "apt update"
+                    sh "apt install -y docker.io docker-compose-plugin"
                     sh "docker --version"
                     sh "docker compose version"
                 }
@@ -27,8 +27,8 @@ pipeline {
         stage('add privilage to docker') {
             steps {
                 script {
-                    sh "sudo usermod -aG docker jenkins"
-                    sh "sudo systemctl restart jenkins"
+                    sh "usermod -aG docker jenkins"
+                    sh "systemctl restart jenkins"
                 }
             }
         }
